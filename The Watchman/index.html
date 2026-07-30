@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Watchman — Temple Door</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --parchment:   #EDE8DC;
+      --parchment-dk:#D8D0BE;
+      --ink:         #1C1612;
+      --ink-soft:    #3A3228;
+      --crimson:     #7A2230;
+      --crimson-lt:  #9B3040;
+      --brass:       #9B7D3A;
+      --stone:       #8C8070;
+    }
+
+    html { font-size: 18px; }
+
+    body {
+      background: var(--parchment);
+      color: var(--ink);
+      font-family: 'EB Garamond', Georgia, serif;
+      min-height: 100vh;
+    }
+
+    /* ── SITE NAV ── */
+    .site-nav {
+      background: var(--ink);
+      padding: 0.6rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    .site-nav a {
+      color: var(--parchment-dk);
+      text-decoration: none;
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .site-nav a:hover { color: var(--brass); }
+    .site-nav .home { color: var(--brass); }
+
+    /* ── MASTHEAD ── */
+    .masthead {
+      text-align: center;
+      padding: 3.5rem 2rem 2rem;
+      border-bottom: 1px solid var(--crimson);
+    }
+    .masthead-rule {
+      width: 4rem;
+      height: 2px;
+      background: var(--crimson);
+      margin: 0 auto 1.2rem;
+    }
+    .masthead h1 {
+      font-family: 'Cinzel', serif;
+      font-weight: 600;
+      font-size: 2.6rem;
+      letter-spacing: 0.18em;
+      color: var(--crimson);
+      text-transform: uppercase;
+      line-height: 1;
+    }
+    .masthead .descriptor {
+      margin-top: 0.8rem;
+      font-size: 0.9rem;
+      font-style: italic;
+      color: var(--stone);
+      letter-spacing: 0.04em;
+    }
+    .masthead .rule-bottom {
+      width: 4rem;
+      height: 2px;
+      background: var(--crimson);
+      margin: 1.2rem auto 0;
+    }
+
+    /* ── EPIGRAPH ── */
+    .epigraph {
+      max-width: 560px;
+      margin: 2.4rem auto 0;
+      padding: 0 2rem;
+      text-align: center;
+    }
+    .epigraph p {
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--ink-soft);
+      line-height: 1.65;
+    }
+    .epigraph cite {
+      display: block;
+      margin-top: 0.6rem;
+      font-size: 0.82rem;
+      font-style: normal;
+      color: var(--stone);
+      font-family: 'Cinzel', serif;
+      letter-spacing: 0.08em;
+    }
+
+    /* ── SECTION DESCRIPTION ── */
+    .section-desc {
+      max-width: 660px;
+      margin: 2.4rem auto 0;
+      padding: 0 2rem;
+      font-size: 0.96rem;
+      line-height: 1.75;
+      color: var(--ink-soft);
+      text-align: center;
+    }
+
+    /* ── ARTICLES ── */
+    .articles-header {
+      max-width: 720px;
+      margin: 3.2rem auto 0;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .articles-header span {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--stone);
+      white-space: nowrap;
+    }
+    .articles-header hr {
+      flex: 1;
+      border: none;
+      border-top: 1px solid var(--parchment-dk);
+    }
+
+    .articles {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 1.2rem 2rem 5rem;
+    }
+
+    .article-card {
+      border-top: 1px solid var(--parchment-dk);
+      padding: 1.8rem 0;
+    }
+    .article-card:last-child {
+      border-bottom: 1px solid var(--parchment-dk);
+    }
+    .article-card .date {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--stone);
+      margin-bottom: 0.5rem;
+    }
+    .article-card h2 {
+      font-family: 'EB Garamond', serif;
+      font-weight: 500;
+      font-size: 1.4rem;
+      line-height: 1.3;
+      margin-bottom: 0.7rem;
+    }
+    .article-card h2 a {
+      color: var(--ink);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .article-card h2 a:hover { color: var(--crimson); }
+
+    .article-card .lede {
+      font-size: 0.93rem;
+      line-height: 1.7;
+      color: var(--ink-soft);
+      margin-bottom: 1rem;
+    }
+    .article-card .read-more {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--crimson);
+      text-decoration: none;
+      border-bottom: 1px solid var(--crimson);
+      padding-bottom: 1px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .article-card .read-more:hover {
+      color: var(--brass);
+      border-color: var(--brass);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      color: var(--stone);
+      text-align: center;
+      padding: 1.4rem 2rem;
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+    }
+    footer a {
+      color: var(--brass);
+      text-decoration: none;
+    }
+
+    @media (max-width: 600px) {
+      .masthead h1 { font-size: 1.9rem; }
+      html { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="https://intelligencereport.info" class="home">Temple Door</a>
+    <a href="https://commentary.intelligencereport.info">Romans Road</a>
+    <a href="https://study.intelligencereport.info">Study Hall</a>
+    <a href="https://confrontations.intelligencereport.info">Confrontations</a>
+    <a href="https://lessons.intelligencereport.info">Lessons</a>
+  </nav>
+
+  <header class="masthead">
+    <div class="masthead-rule"></div>
+    <h1>The Watchman</h1>
+    <p class="descriptor">Analysis &amp; Diagnostics of the Christian Union</p>
+    <div class="rule-bottom"></div>
+  </header>
+
+  <div class="epigraph">
+    <p>"So thou, O son of man, I have set thee a watchman unto the house of Israel;
+    therefore thou shalt hear the word at my mouth, and warn them from me."</p>
+    <cite>Ezekiel 33:7</cite>
+  </div>
+
+  <p class="section-desc">
+    These articles examine the current state of the Christian body — its doctrine,
+    its failures of instruction, and the gap between what the Word teaches and what
+    the institutional church delivers to the believer. The watchman does not editorialize
+    for its own sake. He observes. He names what he sees. He reports.
+  </p>
+
+  <div class="articles-header">
+    <span>Articles</span>
+    <hr>
+  </div>
+
+  <main class="articles">
+
+    <article class="article-card">
+      <p class="date">July 30, 2026</p>
+      <h2>
+        <a href="wages-of-the-sin-nature.html">
+          The Wages of the Sin Nature and the Spiritual Life
+        </a>
+      </h2>
+      <p class="lede">
+        Romans 6:23 is preached almost exclusively to unbelievers. But Paul wrote it
+        to believers — and the wages of the sin nature are collecting on them in real time,
+        in this life, every day they remain out of fellowship. An examination of what the
+        sin nature costs the believer, why the institutional church cannot diagnose it,
+        and the distinction between the gospel of salvation and the gospel of doctrine.
+      </p>
+      <a href="wages-of-the-sin-nature.html" class="read-more">Read article</a>
+    </article>
+
+  </main>
+
+  <footer>
+    <a href="https://intelligencereport.info">Temple Door</a>
+    &nbsp;·&nbsp; intelligencereport.info
+  </footer>
+
+</body>
+</html>
